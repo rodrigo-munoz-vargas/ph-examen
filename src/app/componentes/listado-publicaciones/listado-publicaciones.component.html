@@ -1,0 +1,9 @@
+<ion-list>
+  <ion-item *ngFor="let publicacion of publicaciones; index as i; first as isFirst">
+    <ion-thumbnail slot="start">
+      <img [alt]="publicacion.titulo" [src]="publicacion.foto" />
+    </ion-thumbnail>
+    <ion-label>{{ publicacion.titulo }}</ion-label>
+    <ion-label slot="end">{{ publicacion.descripcion | currency:'CLP' }}</ion-label>
+  </ion-item>
+</ion-list>
