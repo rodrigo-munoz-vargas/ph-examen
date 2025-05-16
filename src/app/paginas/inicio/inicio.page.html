@@ -1,16 +1,8 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Publicaciones</ion-title>
+    <ion-title class="ion-text-center">Publicaciones</ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Publicaciones</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
@@ -19,7 +11,7 @@
     </ion-toolbar>
   </ion-header>
   <!--<app-listado-platillos [platillos]="platillos"/>-->
-  <app-listado-publicaciones />
+  <app-listado-publicaciones [publicaciones]="publicaciones"/>
 
   <ion-fab slot="fixed" vertical="bottom" horizontal="end" routerLink="/agregar-publicacion">
   <ion-fab-button>

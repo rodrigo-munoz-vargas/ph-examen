@@ -7,6 +7,8 @@ import { IonFab, IonFabButton, IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { add } from 'ionicons/icons';
 import { ListadoPublicacionesComponent } from "../../componentes/listado-publicaciones/listado-publicaciones.component";
+import { PublicacionService } from 'src/app/servicios/publicacion.service';
+import { Publicacion } from 'src/app/modelo/publicacion';
 
 @Component({
   selector: 'app-inicio',
@@ -17,11 +19,18 @@ import { ListadoPublicacionesComponent } from "../../componentes/listado-publica
 })
 export class InicioPage implements OnInit {
 
-  constructor() {
+  publicacionService:PublicacionService|undefined
+  publicaciones:Publicacion[] = []
+
+  constructor(publicacionService:PublicacionService) {
+    this.publicacionService = publicacionService
     addIcons({ add });
    }
 
   ngOnInit() {
+    if( this.publicacionService != undefined) {
+      this.publicaciones = this.publicacionService.getPublicaciones()
+    }
   }
 
 }

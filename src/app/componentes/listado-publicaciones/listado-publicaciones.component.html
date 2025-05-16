@@ -1,9 +1,16 @@
 <ion-list>
-  <ion-item *ngFor="let publicacion of publicaciones; index as i; first as isFirst">
-    <ion-thumbnail slot="start">
-      <img [alt]="publicacion.titulo" [src]="publicacion.foto" />
-    </ion-thumbnail>
-    <ion-label>{{ publicacion.titulo }}</ion-label>
-    <ion-label slot="end">{{ publicacion.descripcion | currency:'CLP' }}</ion-label>
+  <!-- Item repetido por cada cita en el array -->
+  <ion-item *ngFor="let publicacion of publicaciones" 
+            lines="full" 
+            detail="false"> <!-- Oculta el icono de detalle por defecto -->
+
+    <app-publicacion [publicacion]="publicacion"></app-publicacion>  <!-- Pasa la cita al componente hijo -->
+
+    <!-- Botón para eliminar cita -->
+    <ion-button fill="clear" 
+                color="primary" 
+                slot="end" (click)="eliminarPublicacion(publicacion)">   <!-- Evento click -->
+      <ion-icon icon="trash-outline" /> <!-- Icono de basura -->
+    </ion-button>
   </ion-item>
 </ion-list>

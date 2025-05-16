@@ -1,18 +1,53 @@
 import { Injectable } from '@angular/core';
 import { Publicacion } from '../modelo/publicacion';
+import { Preferences } from '@capacitor/preferences';
 
+// Servicio para manejar publicaciones con persistencia local
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root' // Disponible en toda la app
 })
 export class PublicacionService {
+  publicaciones: Publicacion[] = [] // Almacena publicaciones en memoria
 
-  constructor() { }
+  constructor() {
+    this.cargarPublicaciones(); // Carga publicaciones al iniciar
+   }
 
-  getPlatillos():Publicacion[] {
-    return [
-      {titulo: "Porotos con riendas", descripcion: "desc 1", foto: "https://img-global.cpcdn.com/recipes/105771a9e774923b/1200x630cq70/photo.jpg"},
-      {titulo: "Pastel de Choclo", descripcion: "desc 2", foto: "https://www.cocina-chilena.com/base/stock/Recipe/pastel-de-choclo-chileno/pastel-de-choclo-chileno_web.jpg.webp"},
-      {titulo: "Humitas", descripcion: "desc 3", foto: "https://cocinachilena.cl/wp-content/uploads/2019/02/Humitas-receta-chilena-6-scaled.jpg"}
-    ]
+  async cargarPublicaciones() {
+    const { value } = await Preferences.get({ key: 'publicaciones' });
+    if (value !== null) {
+      this.publicaciones = JSON.parse(value);
+    }
+  }
+
+  // Guarda publicaciones en almacenamiento
+  async guardarPublicaciones() {
+    await Preferences.set({
+      key: 'publicaciones',
+      value: JSON.stringify(this.publicaciones),
+    });
+  }
+
+  getPublicaciones():Publicacion[] {
+    return this.publicaciones;
+  }
+
+  // Añade nueva publicación
+  async agregarPublicacion(publicacion: Publicacion) {
+    publicacion.id = this.publicaciones.length + 1;
+    this.publicaciones.push(publicacion);
+    await this.guardarPublicaciones();
+  }
+
+  // Elimina una publicación por ID
+  async eliminarPublicacion(publicacion: Publicacion) {
+    this.publicaciones = this.publicaciones.filter(p => p.id !== publicacion.id);
+    await this.guardarPublicaciones();
+  }
+
+  // Borra las publicaciones
+  async borrarCitas() {
+    this.publicaciones = [];
+    await this.guardarPublicaciones();
   }
 }

@@ -1,19 +1,12 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button default-href="#"></ion-back-button>
-    </ion-buttons>
-    <ion-title>Publicación</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
+  <!-- Componente de formulario para agregar citas -->
+  <app-formulario-publicacion 
+    (publicacionAgregada)="agregarPublicacion($event)"> <!-- Escucha evento de nueva cita -->
+  </app-formulario-publicacion>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Publicación</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <p>Publicación</p>
-  
-</ion-content>
+  <!-- Componente de lista que muestra todas las citas -->
+  <!-- <app-listado-publicaciones 
+    [publicaciones]="publicaciones" 
+    (citaEliminada)="eliminarPublicacion($event)"> <!-- Escucha evento de eliminación -->
+  <!-- </app-listado-publicaciones>
+</ion-content>-->
