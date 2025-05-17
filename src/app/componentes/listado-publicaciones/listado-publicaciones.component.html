@@ -7,9 +7,11 @@
     <app-publicacion [publicacion]="publicacion"></app-publicacion>  <!-- Pasa la cita al componente hijo -->
 
     <!-- Botón para eliminar cita -->
-    <ion-button fill="clear" 
-                color="primary" 
-                slot="end" (click)="eliminarPublicacion(publicacion)">   <!-- Evento click -->
+    <ion-button 
+      fill="clear" 
+      color="primary" 
+      slot="end" 
+      (click)="eliminarPublicacion(publicacion)">   <!-- Evento click -->
       <ion-icon icon="trash-outline" /> <!-- Icono de basura -->
     </ion-button>
   </ion-item>

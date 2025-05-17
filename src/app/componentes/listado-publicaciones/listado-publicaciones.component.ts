@@ -15,6 +15,7 @@ import { trashOutline } from 'ionicons/icons'
   imports: [IonIcon, IonButton, PublicacionComponent, IonList, IonItem, CommonModule,FormsModule]
 })
 export class ListadoPublicacionesComponent {
+  
   @Input() publicaciones: Publicacion[] = [] // Array de publicaciones (entrada)
   @Output() publicacionEliminada = new EventEmitter<Publicacion>() // Evento de salida para eliminar
 
