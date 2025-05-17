@@ -5,8 +5,8 @@
   </app-formulario-publicacion>
 
   <!-- Componente de lista que muestra todas las citas -->
-  <!-- <app-listado-publicaciones 
+  <app-listado-publicaciones 
     [publicaciones]="publicaciones" 
-    (citaEliminada)="eliminarPublicacion($event)"> <!-- Escucha evento de eliminación -->
-  <!-- </app-listado-publicaciones>
-</ion-content>-->
+    (publicacionEliminada)="eliminarPublicacion($event)">  <!-- Escucha evento de eliminación -->
+  </app-listado-publicaciones>
+</ion-content>

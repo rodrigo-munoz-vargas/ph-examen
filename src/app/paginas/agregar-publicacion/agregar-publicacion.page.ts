@@ -25,13 +25,13 @@ export class AgregarPublicacionPage implements OnInit {
   }
 
   // Agregar una nueva publicación
-  agregarPublicacion(publicacion: Publicacion) {
+  async agregarPublicacion(publicacion: Publicacion) {
     this.publicacionService.agregarPublicacion(publicacion)
     this.publicaciones = this.publicacionService.getPublicaciones()
   }
 
   // Elimina una publicación existente
-  eliminarPublicacion(publicacion: Publicacion) {
+  async eliminarPublicacion(publicacion: Publicacion) {
     this.publicacionService.eliminarPublicacion(publicacion)
     this.publicaciones = this.publicacionService.getPublicaciones()
   }

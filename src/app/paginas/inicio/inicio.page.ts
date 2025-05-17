@@ -19,12 +19,12 @@ import { Publicacion } from 'src/app/modelo/publicacion';
 })
 export class InicioPage implements OnInit {
 
-  publicacionService:PublicacionService|undefined
+  publicacionService:PublicacionService
   publicaciones:Publicacion[] = []
 
   constructor(publicacionService:PublicacionService) {
     this.publicacionService = publicacionService
-    addIcons({ add });
+    addIcons({ add })
    }
 
   ngOnInit() {

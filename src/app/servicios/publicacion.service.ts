@@ -14,14 +14,16 @@ export class PublicacionService {
    }
 
   async cargarPublicaciones() {
-    const { value } = await Preferences.get({ key: 'publicaciones' });
+    const { value } = await Preferences.get({ key: 'publicaciones' })
+    console.log('Datos cargados:', value)
     if (value !== null) {
-      this.publicaciones = JSON.parse(value);
+      this.publicaciones = JSON.parse(value)
     }
   }
 
   // Guarda publicaciones en almacenamiento
   async guardarPublicaciones() {
+    console.log('Guardando:', this.publicaciones)
     await Preferences.set({
       key: 'publicaciones',
       value: JSON.stringify(this.publicaciones),
