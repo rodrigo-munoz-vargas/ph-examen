@@ -10,7 +10,7 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
   templateUrl: './formulario-publicacion.component.html',
   styleUrls: ['./formulario-publicacion.component.scss'],
   standalone: true,
-  imports: [IonImg, IonText, IonText, CommonModule, IonIcon, IonBackButton, IonHeader, IonToolbar, IonButtons, IonTitle, IonCard, IonCardHeader, IonButton, IonCardTitle, IonCardContent, IonItem, IonInput, IonButton, FormsModule]
+  imports: [IonImg, IonText, IonText, CommonModule, IonIcon, IonBackButton, IonHeader, IonToolbar, IonButtons, IonTitle, IonCard, IonButton, IonCardContent, IonItem, IonInput, IonButton, FormsModule]
 })
 export class FormularioPublicacionComponent {
   // Objeto que almacena los datos de la publicacion, vinculado con los campos del formulario
@@ -30,11 +30,11 @@ export class FormularioPublicacionComponent {
         allowEditing: false,
         resultType: CameraResultType.Base64,
         source: CameraSource.Camera
-      });
+      })
       
-      this.publicacion.foto = image.base64String;
+      this.publicacion.foto = image.base64String
     } catch (error) {
-      console.error('Error al tomar foto:', error);
+      console.error('Error al tomar foto:', error)
     }
   }
 
@@ -42,7 +42,7 @@ export class FormularioPublicacionComponent {
 
   agregarPublicacion() {
     // Emite el evento con los datos de la publicacion actual
-    this.publicacionAgregada.emit(this.publicacion);
+    this.publicacionAgregada.emit(this.publicacion)
     this.publicacion = {
       descripcion: '',
       titulo: ''
