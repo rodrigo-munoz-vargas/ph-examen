@@ -36,6 +36,7 @@ export class PublicacionService {
 
   // Añade nueva publicación
   async agregarPublicacion(publicacion: Publicacion) {
+    publicacion.fecha = new Date().toISOString();
     publicacion.id = this.publicaciones.length + 1;
     this.publicaciones.push(publicacion);
     await this.guardarPublicaciones();
