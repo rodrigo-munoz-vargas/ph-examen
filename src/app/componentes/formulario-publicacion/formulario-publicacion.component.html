@@ -4,22 +4,19 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home" /> <!-- Botón para volver al home -->
     </ion-buttons>
-    <ion-title>Gestión de citas</ion-title> <!-- Título de la página -->
+    <ion-title>Publicación</ion-title> <!-- Título de la página -->
   </ion-toolbar>
 </ion-header>
 
 <!-- Card para el formulario de creación -->
 <ion-card>
-  <ion-card-header>
-    <ion-card-title>Crea una nueva cita</ion-card-title> <!-- Título del formulario -->
-  </ion-card-header>
   <ion-card-content>
     <!-- Campo para el título de la publicación -->    
     <ion-item>
       <ion-input
         [(ngModel)]="publicacion.titulo"
         required="required"       
-        minlength="2"
+        minlength="5"
         #fraseInput="ngModel"
         label="Título"
         placeholder="Título de la publicación"
@@ -29,18 +26,28 @@
     <!-- Mensaje de error para el título -->
     <ion-item *ngIf="!fraseInput.valid && !fraseInput.pristine">
       <ion-text color="danger">
-        Escriba un título de 2 o más caracteres
+        Escriba un título de 5 o más caracteres
       </ion-text>
     </ion-item>
 
-    <p>foto placeholder</p>
+    <ion-item>
+      <ion-button (click)="tomarFoto()" expand="block" fill="outline">
+        <ion-icon name="camera" slot="start"></ion-icon>
+        Tomar Foto
+      </ion-button>
+    </ion-item>
+    
+    <ion-item *ngIf="publicacion.foto">
+      <ion-img [src]="'data:image/jpeg;base64,' + publicacion.foto" 
+               style="max-height: 200px; margin: 0 auto;"></ion-img>
+    </ion-item>
 
     <!-- Campo para la descripcion de la publicación -->
     <ion-item>
       <ion-input
         [(ngModel)]="publicacion.descripcion"
         required="required"
-        minlength="5"
+        minlength="20"
         #autorInput="ngModel"
         label="Descripción"
         placeholder="Descripción de la publicación"
@@ -50,7 +57,7 @@
      <!-- Mensaje de error para la descripción -->
     <ion-item *ngIf="!autorInput.valid && !autorInput.pristine">
       <ion-text color="danger">
-        Escriba una descripción de 5 o más caracteres
+        Escriba una descripción de 20 o más caracteres
       </ion-text>
     </ion-item>
 
