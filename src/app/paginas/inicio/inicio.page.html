@@ -10,9 +10,12 @@
       <ion-title size="large">inicio</ion-title>
     </ion-toolbar>
   </ion-header>
-  <!--<app-listado-platillos [platillos]="platillos"/>-->
-  <app-listado-publicaciones [publicaciones]="publicaciones"/>
 
+  <app-listado-publicaciones 
+    [publicaciones]="publicaciones" 
+    (publicacionEliminada)="eliminarPublicacion($event)">  <!-- Escucha evento de eliminación -->
+  </app-listado-publicaciones>
+  
   <ion-fab slot="fixed" vertical="bottom" horizontal="end" routerLink="/agregar-publicacion">
   <ion-fab-button>
     <ion-icon name="add"></ion-icon>

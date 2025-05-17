@@ -24,13 +24,21 @@ export class InicioPage implements OnInit {
 
   constructor(publicacionService:PublicacionService) {
     this.publicacionService = publicacionService
-    addIcons({ add })
+    addIcons({add});
    }
 
-  ngOnInit() {
-    if( this.publicacionService != undefined) {
-      this.publicaciones = this.publicacionService.getPublicaciones()
-    }
+  async ngOnInit() {
+    await this.publicacionService.cargarPublicaciones();
+    this.publicaciones = this.publicacionService.getPublicaciones();
+  }
+  
+  async ionViewWillEnter() {  // Se ejecuta cada vez que se entra a la página
+  this.publicaciones = await this.publicacionService.getPublicaciones()
   }
 
+  // Elimina una publicación existente
+  async eliminarPublicacion(publicacion: Publicacion) {
+    this.publicacionService.eliminarPublicacion(publicacion)
+    this.publicaciones = this.publicacionService.getPublicaciones()
+  }
 }

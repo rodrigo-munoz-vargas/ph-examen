@@ -12,7 +12,7 @@ import { trashOutline } from 'ionicons/icons'
   templateUrl: './listado-publicaciones.component.html',
   styleUrls: ['./listado-publicaciones.component.scss'],
   standalone: true,
-  imports: [IonIcon, IonButton, PublicacionComponent, IonLabel, IonList, IonItem, IonThumbnail, CommonModule,FormsModule]
+  imports: [IonIcon, IonButton, PublicacionComponent, IonList, IonItem, CommonModule,FormsModule]
 })
 export class ListadoPublicacionesComponent {
   @Input() publicaciones: Publicacion[] = [] // Array de publicaciones (entrada)

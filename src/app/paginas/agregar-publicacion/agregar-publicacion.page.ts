@@ -12,7 +12,7 @@ import { ListadoPublicacionesComponent } from "../../componentes/listado-publica
   templateUrl: './agregar-publicacion.page.html',
   styleUrls: ['./agregar-publicacion.page.scss'],
   standalone: true,
-  imports: [IonButtons, IonBackButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, FormularioPublicacionComponent, ListadoPublicacionesComponent]
+  imports: [IonContent, CommonModule, FormsModule, FormularioPublicacionComponent, ListadoPublicacionesComponent]
 })
 export class AgregarPublicacionPage implements OnInit {
   publicaciones: Publicacion[] = [] // Almacena el listado publicaciones
