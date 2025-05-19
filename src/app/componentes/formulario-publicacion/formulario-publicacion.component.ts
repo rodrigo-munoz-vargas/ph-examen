@@ -1,16 +1,18 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Publicacion } from 'src/app/modelo/publicacion';
-import { IonHeader, IonToolbar, IonButtons, IonTitle, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonItem, IonInput, IonButton, IonBackButton, IonIcon, IonText, IonImg } from "@ionic/angular/standalone";
+import { IonHeader, IonToolbar, IonButtons, IonTitle, IonCard, IonCardContent, IonItem, IonInput, IonButton, IonBackButton, IonIcon, IonText, IonImg } from "@ionic/angular/standalone";
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import { addIcons } from 'ionicons';
+import { cameraOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-formulario-publicacion',
   templateUrl: './formulario-publicacion.component.html',
   styleUrls: ['./formulario-publicacion.component.scss'],
   standalone: true,
-  imports: [IonImg, IonText, IonText, CommonModule, IonIcon, IonBackButton, IonHeader, IonToolbar, IonButtons, IonTitle, IonCard, IonButton, IonCardContent, IonItem, IonInput, IonButton, FormsModule]
+  imports: [IonImg, IonText, CommonModule, IonIcon, IonBackButton, IonHeader, IonToolbar, IonButtons, IonTitle, IonCard, IonButton, IonCardContent, IonItem, IonInput, IonButton, FormsModule]
 })
 export class FormularioPublicacionComponent {
   // Objeto que almacena los datos de la publicacion, vinculado con los campos del formulario
@@ -38,7 +40,11 @@ export class FormularioPublicacionComponent {
     }
   }
 
-  constructor() { }
+  constructor() { 
+    addIcons({
+    cameraOutline
+  });
+  }
 
   agregarPublicacion() {
     // Emite el evento con los datos de la publicacion actual

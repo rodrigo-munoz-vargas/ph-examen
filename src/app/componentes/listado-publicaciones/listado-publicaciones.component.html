@@ -1,12 +1,12 @@
 <ion-list>
-  <!-- Item repetido por cada cita en el array -->
+  <!-- Item repetido por cada publicación en el array -->
   <ion-item *ngFor="let publicacion of publicaciones" 
             lines="full" 
-            detail="false"> <!-- Oculta el icono de detalle por defecto -->
+            detail="false">
 
     <app-publicacion [publicacion]="publicacion"></app-publicacion>  <!-- Pasa la cita al componente hijo -->
 
-    <!-- Botón para eliminar cita -->
+    <!-- Botón para eliminar publicación -->
     <ion-button 
       fill="clear" 
       color="primary" 

@@ -1,28 +1,10 @@
-<!-- Muestra una publicacion si existe, sino muestra estado de carga -->
-<ion-card *ngIf="publicacion; else cargando"
-  style="box-shadow: none; background-color: #ffffff; width: 100%; border-radius: 0; margin: 0;"
-  color="light"
-  class="ion-padding"
->
-  <!-- Contenido de la publicacion -->
-  <ion-card-content>
-    <ion-img *ngIf="publicacion.foto" 
-             [src]="'data:image/jpeg;base64,' + publicacion.foto"
-             style="max-height: 150px; object-fit: cover; margin-bottom: 10px;">
-    </ion-img>
-    <!-- Descripcion de la publicacion -->
-    <p class="ion-text-start" style="color: #2e76f7; font-size: 22px;">
-      {{ publicacion.descripcion }}
-    </p>
-
-    <!-- Titulo de la publicacion -->
-    <footer class="ion-text-end" style="color: #000; font-size: 16px;">
-      {{ publicacion.titulo }} <span style="font-size: 14px; color: #666;">| {{ publicacion.fecha | date:'dd/MM/yyyy' }}</span>
-    </footer>
-  </ion-card-content>
-</ion-card>
-
-<!-- Template que se muestra mientras carga -->
-<ng-template #cargando>
-  <p>Cargando publicaciones...</p>
-</ng-template>
+<ion-card-content style="display: flex; flex-direction: row;">
+  <ion-img *ngIf="publicacion.foto" 
+           [src]="'data:image/jpeg;base64,' + publicacion.foto"
+           style="width: 100px; height: 100px; object-fit: cover; margin-right: 10px;">
+  </ion-img>
+  <div style="display: flex; flex-direction: row; align-items: center;">
+    <b style="font-size: 18px;">{{ publicacion.titulo }}</b>
+    <span style="margin-left: 20px; color: grey;">{{ publicacion.fecha | date:'dd-MM-yyyy' }}</span>
+  </div>
+</ion-card-content>

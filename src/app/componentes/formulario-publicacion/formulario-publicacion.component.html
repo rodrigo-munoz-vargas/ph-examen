@@ -10,10 +10,11 @@
 
 <!-- Card para el formulario de creación -->
 <ion-card>
-  <ion-card-content>
+  <ion-card-content style="overflow: visible;">
     <!-- Campo para el título de la publicación -->    
-    <ion-item>
+    <ion-item lines="none">
       <ion-input
+        style="font-size: 18px; color: #666;"
         [(ngModel)]="publicacion.titulo"
         required="required"       
         minlength="5"
@@ -24,27 +25,29 @@
     </ion-item>
 
     <!-- Mensaje de error para el título -->
-    <ion-item *ngIf="!fraseInput.valid && !fraseInput.pristine">
+    <ion-item lines="none" *ngIf="!fraseInput.valid && !fraseInput.pristine">
       <ion-text color="danger">
         Escriba un título de 5 o más caracteres
       </ion-text>
     </ion-item>
 
-    <ion-item>
-      <ion-button (click)="tomarFoto()" expand="block" fill="outline">
-        <ion-icon name="camera" slot="start"></ion-icon>
-        Tomar Foto
-      </ion-button>
-    </ion-item>
-    
-    <ion-item *ngIf="publicacion.foto">
-      <ion-img [src]="'data:image/jpeg;base64,' + publicacion.foto" 
-               style="max-height: 200px; margin: 0 auto;"></ion-img>
+    <ion-item lines="none">
+      <div style="display: flex; flex-direction: row; align-items: center;">
+        <ion-button (click)="tomarFoto()" color="medium" style="--border-radius: 2px; --padding-start: 12px; --padding-end: 12px; --padding-top: 10px; --padding-bottom: 8px;">
+          <ion-icon name="camera-outline" slot="start" style="color: white;"></ion-icon>
+          Fotografía
+        </ion-button>
+        <ion-img *ngIf="publicacion.foto" 
+                [src]="'data:image/jpeg;base64,' + publicacion.foto" 
+                style="max-height: 300px; max-width: 300px; object-fit: contain; margin-left: 40px;">
+        </ion-img>
+      </div>
     </ion-item>
 
     <!-- Campo para la descripcion de la publicación -->
-    <ion-item>
+    <ion-item lines="none">
       <ion-input
+        style="font-size: 18px; color: #666;"
         [(ngModel)]="publicacion.descripcion"
         required="required"
         minlength="20"
@@ -55,7 +58,7 @@
     </ion-item>
 
      <!-- Mensaje de error para la descripción -->
-    <ion-item *ngIf="!autorInput.valid && !autorInput.pristine">
+    <ion-item lines="none" *ngIf="!autorInput.valid && !autorInput.pristine">
       <ion-text color="danger">
         Escriba una descripción de 20 o más caracteres
       </ion-text>
@@ -64,8 +67,10 @@
     <!-- Botón para agregar publicación -->
     <ion-button 
       (click)="agregarPublicacion()"
-      [disabled]="!autorInput.valid"
-      color="primary">
+      [disabled]="!autorInput.valid || !fraseInput.valid"
+      color="primary"
+      size="small"
+      style="--padding-start: 8px; --padding-end: 8px; --padding-top: 0px; --padding-bottom: 0px; margin-left: 16px;">
       Guardar
     </ion-button>
   </ion-card-content>
